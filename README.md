@@ -8,9 +8,7 @@ A simple Node.js application that enables users to sign up, log in, browse activ
 📁 Project Structure
 Your project directory is organized as follows:
 
-pgsql
-Copy
-Edit
+
 src/
 ├── authService/         → JWT utilities
 ├── config/              → Database and server config
