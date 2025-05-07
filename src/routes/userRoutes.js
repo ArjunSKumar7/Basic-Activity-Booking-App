@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get("/getAllActivities", userController.getAllActivities);
 router.post("/bookActivity", userController.bookActivity);
+router.get("/getBookedActivities", userController.getUserBookings);
 
 
 

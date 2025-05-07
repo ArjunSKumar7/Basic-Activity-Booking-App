@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import authRoute from "./routes/authRoutes.js";
 import userRoute from "./routes/userRoutes.js";
 import { seedActivities } from "./seed/seedData.js";
+import authCheck from "./middlewares/authCheck.js";
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
@@ -25,8 +26,7 @@ db.connect()
   });
 
 
-  //routes
 
 app.use("/api/auth", authRoute);
 
-app.use("/api/user",userRoute);
+app.use("/api/user",authCheck(),userRoute);

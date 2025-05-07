@@ -1,12 +1,11 @@
-import dotENV from 'dotenv';
+import dotENV from "dotenv";
 
-dotENV.config()
+dotENV.config();
 
 export const configKeys = {
-    MONGODB_URL:process.env.MONGODB_URL ,
-    PORT:process.env.PORT ,
-    JWT_SECRET_KEY:process.env.JWT_SECRET_KEY ,
-    CLIENT_URL:process.env.JWT_SECRET_KEY,
-    JWT_EXPIRATION:process.env.JWT_EXPIRATION
-    
-}
+  MONGODB_URL: process.env.MONGODB_URL,
+  PORT: process.env.PORT,
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+  CLIENT_URL: process.env.JWT_SECRET_KEY,
+  JWT_EXPIRATION: process.env.JWT_EXPIRATION,
+};

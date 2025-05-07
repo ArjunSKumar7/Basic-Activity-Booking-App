@@ -1,6 +1,7 @@
 import User from "../models/userSchema.js";
 import Activity from "../models/activitySchema.js";
 import ActivityBooking from "../models/activityBookingSchema.js";
+import mongoose from 'mongoose';
 const userController={
     bookActivity: async (req, res) => {
         const { userId, activityId } = req.body;
@@ -51,5 +52,48 @@ const userController={
           return res.status(500).json({ message: "Something went wrong", error });
         }
       },
+      getUserBookings: async (req, res) => {
+        try {
+        const userId = req.userId;
+        
+      
+          const bookings = await ActivityBooking.aggregate([
+            { $match: { user: new mongoose.Types.ObjectId(userId) } },
+            {
+              $lookup: {
+                from: "activities", 
+                localField: "activity",
+                foreignField: "_id",
+                as: "activityDetails"
+              }
+            },
+            { $unwind: "$activityDetails" },
+            {
+              $project: {
+                _id: 1,
+                bookingDate: 1,
+                "activityDetails._id": 1,
+                "activityDetails.title": 1,
+                "activityDetails.description": 1,
+                "activityDetails.location": 1,
+                "activityDetails.date": 1,
+                "activityDetails.time": 1
+              }
+            }
+          ]);
+        
+          res.json({
+            status: 200,
+            message: "Bookings fetched successfully",
+            bookings
+          });
+        } catch (err) {
+          res.status(500).json({
+            status: 500,
+            message: `Error fetching bookings: ${err.message}`
+          });
+        }
+        },
+    
 }
 export default userController;

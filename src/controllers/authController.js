@@ -11,7 +11,6 @@ const authController = {
       if (existingUser) {
         return res.json({ userExist: true, message: "User already exists" });
       } else {
-   
         const newUserData = await User.create({
           email,
           name,
@@ -38,12 +37,11 @@ const authController = {
     }
   },
 
-
   userLogin: async (req, res) => {
     try {
       const { email, password } = req.body;
       const userData = await User.findOne({ email: email });
-  
+
       if (!userData) {
         res.json({
           status: 400,
@@ -52,11 +50,12 @@ const authController = {
         });
       } else if (userData.password) {
         const validPassword = await bcrypt.compare(password, userData.password);
-        
+
         if (validPassword) {
           const token = generateJWT(userData._id.toString());
-          res.json({
-            user: userData,
+          const { password, ...userWithoutPassword } = userData._doc;
+          return res.json({
+            user: userWithoutPassword,
             created: true,
             token: token,
             status: 200,

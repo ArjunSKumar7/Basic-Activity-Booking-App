@@ -8,7 +8,6 @@ export const generateJWT = (id) => {
       const token = jwt.sign(jwtPayload, configKeys.JWT_SECRET_KEY, {
         expiresIn: configKeys.JWT_EXPIRATION,
       });
-      console.log("token", token);
       return token;
     }
   } catch (error) {
@@ -19,7 +18,7 @@ export const generateJWT = (id) => {
 
 export const verifyjwt = (token) => {
   if (configKeys.JWT_SECRET_KEY) {
-    const verifyJwt = jwt.verify(token, configKeys.JWT_SECRET_KEY);
+    const verifyJwt = jwt.verify(token,configKeys.JWT_SECRET_KEY);
     return verifyJwt;
   }
 };

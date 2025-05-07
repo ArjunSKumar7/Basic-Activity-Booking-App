@@ -1,20 +1,16 @@
-import mongoose from 'mongoose';
-import { configKeys } from './keys.js';
+import mongoose from "mongoose";
+import { configKeys } from "./keys.js";
 
-mongoose.set("strictQuery", true)
+mongoose.set("strictQuery", true);
 
-const connect = async()=>{
-    try{
-        await mongoose.connect(configKeys.MONGODB_URL)
-        console.log("Database connected successfully")
-            
-        
-    }catch(error){
-        console.log(`Database connection error : ${error}`)
-        process.exit(1)
-    }
-}
+const connect = async () => {
+  try {
+    await mongoose.connect(configKeys.MONGODB_URL);
+    console.log("Database connected successfully");
+  } catch (error) {
+    console.log(`Database connection error : ${error}`);
+    process.exit(1);
+  }
+};
 
-export default {connect};
-
-
+export default { connect };
