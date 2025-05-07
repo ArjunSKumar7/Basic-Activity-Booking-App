@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "vercel-build": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "author": "Arjun S Kumar",
   "license": "ISC",
