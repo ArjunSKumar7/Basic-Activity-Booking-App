@@ -1,5 +1,5 @@
 import {Server} from 'http';
-import { configKeys } from '../config/keys.js';
+import { configKeys } from './keys.js';
 
 const serverConfig = (server) =>{
     const startServer = ()=>{

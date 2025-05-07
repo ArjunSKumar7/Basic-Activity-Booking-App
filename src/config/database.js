@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { configKeys } from '../config/keys.js';
+import { configKeys } from './keys.js';
 
 mongoose.set("strictQuery", true)
 
