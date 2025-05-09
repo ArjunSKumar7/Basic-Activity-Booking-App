@@ -29,4 +29,6 @@ db.connect()
 
 app.use("/api/auth", authRoute);
 
-app.use("/api/user",authCheck(),userRoute);
+app.use("/api/user",userRoute);
+
+
