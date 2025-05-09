@@ -1,6 +1,6 @@
 import express from "express";
 import userController from "../controllers/userController.js";
-import authCheck from "./middlewares/authCheck.js";
+import authCheck from "../middlewares/authCheck.js";
 const router = express.Router();
 
 //user login and signup
