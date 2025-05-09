@@ -86,9 +86,9 @@ POST /api/auth/user/signup — Create user account
 
 POST /api/auth/user/login — Log in and get JWT token
 
-🔒 Protected (requires Authorization: Bearer TOKEN):
-
 GET /api/user/getAllActivities — List all available activities
+
+🔒 Protected (requires Authorization: Bearer TOKEN):
 
 POST /api/user/bookActivity — Book an activity
 
